@@ -92,7 +92,7 @@ namespace rpg_game_wf
         private void timer3_Tick_1(object sender, EventArgs e)
         {
 
-            int speed = 2;
+            int speed = 3;
 
             foreach (var pic in pictures)
             {

@@ -39,7 +39,8 @@ namespace rpg_game_wf
         {
             if (StoreInfo.isPlayer1Turn)
             {
-                damage = StoreInfo.Player1.CalculateDamage(StoreInfo.Player2.AttackPower, Hero.AttackType.Physical, StoreInfo.Player1.CriticalChance, StoreInfo.Player1.Name);
+                damage = StoreInfo.Player1.CalculateDamage(StoreInfo.Player2.AttackPower, 
+                    Hero.AttackType.Physical, StoreInfo.Player1.CriticalChance, StoreInfo.Player1.Name);
                 damage = StoreInfo.Player2.Defend(damage);
 
                 StoreInfo.isPlayer1Turn = false;
@@ -61,7 +62,8 @@ namespace rpg_game_wf
             }
             else
             {
-                damage = StoreInfo.Player2.CalculateDamage(StoreInfo.Player1.AttackPower, Hero.AttackType.Physical, StoreInfo.Player2.CriticalChance, StoreInfo.Player2.Name);
+                damage = StoreInfo.Player2.CalculateDamage(StoreInfo.Player1.AttackPower, 
+                    Hero.AttackType.Physical, StoreInfo.Player2.CriticalChance, StoreInfo.Player2.Name);
                 damage = StoreInfo.Player1.Defend(damage);
 
                 StoreInfo.isPlayer1Turn = true;
@@ -96,10 +98,8 @@ namespace rpg_game_wf
                 label10.ForeColor = Color.Chocolate;
                 MoveLabelUpAndHide(label10);
 
-
                 label9.Text = "PLAYER TWO";
                 whoWins();
-
             }
             else
             {
@@ -114,8 +114,6 @@ namespace rpg_game_wf
 
                 label9.Text = "PLAYER ONE";
                 whoWins();
-
-
             }
         }
 
@@ -160,10 +158,10 @@ namespace rpg_game_wf
                 StoreInfo.score = 0;
                 StoreInfo.counter = 0;
                 Form form = new Form3();
-                form.StartPosition = FormStartPosition.CenterScreen;                
-                form.ShowDialog();                              
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.ShowDialog();
 
-                if(StoreInfo.score == 3)
+                if (StoreInfo.score == 3)
                 {
                     damage = StoreInfo.Player1.AttackPower + 100;
                 }
@@ -229,13 +227,12 @@ namespace rpg_game_wf
                 label9.ForeColor = Color.DarkRed;
 
                 label10.Show();
-                label10.Text = "Skill " + damage.ToString(); 
+                label10.Text = "Skill " + damage.ToString();
                 label10.ForeColor = Color.DarkBlue;
                 MoveLabelUpAndHide(label10);
 
                 label9.Text = "PLAYER ONE";
                 whoWins();
-
             }
         }
 
@@ -265,7 +262,6 @@ namespace rpg_game_wf
                         JsonSerializer.Serialize<Statistics>(file, StoreInfo.statistics);
                         Console.WriteLine(file.Name);
                     }
-
                 }
                 if (StoreInfo.Player2.Health <= 0)
                 {
@@ -285,13 +281,9 @@ namespace rpg_game_wf
                         JsonSerializer.Serialize<Statistics>(file, StoreInfo.statistics);
                         Console.WriteLine(file.Name);
                     }
-
                 }
-
                 this.Close();
-                
             }
-
         }
         private void selectPlayerModel()
         {
@@ -319,15 +311,14 @@ namespace rpg_game_wf
             {
                 pictureBox2.Image = Properties.Resources.archer;
             }
-
         }
         private async void MoveLabelUpAndHide(Label label)
         {
             Point originalLocation = label.Location;
 
-            int moveDistance = 150; 
+            int moveDistance = 150;
             int stepCount = 30;
-            int stepDelay = 10; 
+            int stepDelay = 10;
             int deltaY = moveDistance / stepCount;
 
             for (int i = 0; i < stepCount; i++)
@@ -336,9 +327,7 @@ namespace rpg_game_wf
                 await Task.Delay(stepDelay);
             }
 
-      
             label.Hide();
-
             label.Location = originalLocation;
         }
         private void label7_Click(object sender, EventArgs e)

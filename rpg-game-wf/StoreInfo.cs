@@ -10,7 +10,6 @@ namespace rpg_game_wf
 {
     class StoreInfo
     {
-
         private StoreInfo() { }
         public static bool isPlayer1Turn = true;
 
@@ -32,7 +31,6 @@ namespace rpg_game_wf
         public static int score = 0;
         public static int counter = 0;
 
-
-
+        public static int skillCounter = 0;
     }
 }
